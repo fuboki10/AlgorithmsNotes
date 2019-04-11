@@ -59,3 +59,26 @@ void DFS(int s)
                 stack.push(i); 
     } 
 } 
+
+
+//// Detect Cycle
+bool isCycle(int v, int parent)
+{
+	vis[v] = 1;
+	for (auto child : adj[v])
+	{
+		if (!vis[child])
+		{
+			if (isCycle(child, v))
+			{
+				return true;
+			}
+		}
+		else if (child != parent)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
