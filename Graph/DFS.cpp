@@ -1,7 +1,7 @@
 //// DFS
 bool visited[];
 vector<vector<int>> adj;
-void Graph::DFS(int v)
+void DFS(int v)
 {
     visited[v] = true;
     cout << v << " ";
