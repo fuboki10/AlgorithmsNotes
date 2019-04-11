@@ -32,3 +32,30 @@ void Topological_sort(int student)
     }
     Topological.pb(student);
 }
+
+
+//// Iterative DFS
+void DFS(int s) 
+{ 
+
+    vector<bool> visited(V, false); 
+  
+    stack<int> stack; 
+  
+    stack.push(s); 
+  
+    while (!stack.empty()) 
+    { 
+
+        s = stack.top(); 
+        stack.pop(); 
+        if (!visited[s]) 
+        { 
+            cout << s << " "; 
+            visited[s] = true; 
+        }  
+        for (auto i : adj[s])
+            if (!visited[i]) 
+                stack.push(i); 
+    } 
+} 
