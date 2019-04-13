@@ -1,3 +1,5 @@
+/*** https://cp-algorithms.com/data_structures/disjoint_set_union.html ***/
+
 const int N = 1e5 + 10;
 int parent[N];
 int rank[N];
