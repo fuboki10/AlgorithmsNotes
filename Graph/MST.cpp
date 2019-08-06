@@ -31,7 +31,7 @@ typedef map<string, string>   mss;
 #define sc2(x,y)  scanf("%d%d",&x,&y)
 #define sc3(x,y,z) scanf("%d%d%d",&x,&y,&z)
 #define sz         size()
-#define rep(i,v) for (int i = 0; i < sz(v); i++)
+#define rep(i,v) for (int i = 0; i < v.sz; i++)
 #define lp(i, a, b) for (int i = int(a); i < int(b); i++)
 #define lpi(i, b, a) for (int i = int(b); i >= a; i--)
 #define watch(x) cout << (#x) << " is " << (x) << endl
@@ -117,7 +117,7 @@ pair<int, vector<edge>> Kruskal(vector<edge> edgeList, int n)
     int Cost = 0;
     priority_queue<edge> q;
     rep(i, edgeList) q.push(edgeList[i]);
-    while (!q.empty)
+    while (!q.empty())
     {
         edge e = q.top(); q.pop();
         if (uf.union_sets(e.from, e.to))

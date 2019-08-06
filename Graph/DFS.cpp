@@ -34,6 +34,50 @@ void Topological_sort(int student)
 }
 
 
+//// Stable Topological sort (Kahn's algorithm)
+
+void Graph::topologicalSort() 
+{ 
+    vector<int> in_degree(V, 0); 
+  
+    for (int u=0; u<V; u++) 
+    { 
+        for (auto it : adj[u])
+             in_degree[it]++; 
+    } 
+ 
+    queue<int> q; 
+    for (int i = 0; i < V; i++) 
+        if (in_degree[i] == 0) 
+            q.push(i); 
+  
+    int cnt = 0; 
+    vector <int> top_order; 
+    while (!q.empty()) 
+    { 
+        int u = q.front(); 
+        q.pop(); 
+        top_order.push_back(u); 
+  
+        for (auto it : adj[u])
+            if (--in_degree[it] == 0) 
+                q.push(it); 
+
+        cnt++; 
+    } 
+  
+    // Check if there was a cycle 
+    if (cnt != V) 
+    { 
+        cout << "There exists a cycle in the graph\n"; 
+        return; 
+    } 
+  
+    for (int i=0; i<top_order.size(); i++) 
+        cout << top_order[i] << " "; 
+    cout << endl; 
+} 
+
 //// Iterative DFS
 void DFS(int s) 
 { 
